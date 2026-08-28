@@ -241,6 +241,9 @@ namespace CKAN.CmdLine
         [Option("asroot", DefaultValue = false, HelpText = "Allow CKAN to run as administrator")]
         public bool AsRoot { get; set; }
 
+        [Option("dry-run", DefaultValue = false, HelpText = "Simulate the command without making any changes to disk or the registry")]
+        public bool DryRun { get; set; }
+
         [HelpVerbOption]
         public string GetUsage(string verb)
             => HelpText.AutoBuild(this, verb);

@@ -125,7 +125,7 @@ namespace Tests.CmdLine
                                                   "UniversalStorage-TAC", "USITools",
                                               }),
          TestCase("install --", ExpectedResult = new string[] { "--allow-incompatible", "--asroot", "--ckanfiles", "--debug",
-                                                                "--debugger", "--gamedir", "--headless", "--instance",
+                                                                "--debugger", "--dry-run", "--gamedir", "--headless", "--instance",
                                                                 "--net-useragent", "--no-recommends", "--verbose",
                                                                 "--with-all-suggests", "--with-suggests" }),
          TestCase("install -",  ExpectedResult = new string[] { "-c", "-d", "-v" }),

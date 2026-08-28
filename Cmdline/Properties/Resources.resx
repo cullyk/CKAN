@@ -124,6 +124,8 @@
   <data name="ArgumentMissing" xml:space="preserve"><value>argument missing, perhaps you forgot it?</value></data>
   <data name="Path" xml:space="preserve"><value>path</value></data>
   <data name="MainVersion" xml:space="preserve"><value>You are using CKAN version {0}</value></data>
+  <data name="MainDryRunActive" xml:space="preserve"><value>DRY RUN: no changes will be saved. All actions will be rolled back.</value></data>
+  <data name="MainDryRunComplete" xml:space="preserve"><value>DRY RUN complete: all changes have been rolled back. Nothing was modified.</value></data>
   <data name="MainUnknownCommand" xml:space="preserve"><value>Unknown command, try --help</value></data>
   <data name="MainMissingInstance" xml:space="preserve"><value>I don't know where a game instance is installed.
 Use 'ckan instance help' for assistance in setting this.</value></data>

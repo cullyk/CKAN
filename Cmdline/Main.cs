@@ -172,6 +172,25 @@ namespace CKAN.CmdLine
                     return exitCode;
                 }
                 // Don't bother with instances or registries yet because some commands don't need them.
+                if (options.DryRun)
+                {
+                    // Wrap the whole action in an ambient transaction that we deliberately
+                    // never Complete(). Every mutating code path in Core already opens its
+                    // own TransactionScope with TransactionScopeOption.Required, so those
+                    // enlist in this one instead of committing independently. Disposing
+                    // without Complete() rolls the whole lot back, leaving the game folder
+                    // and registry untouched while the command still reports what it would
+                    // have done.
+                    user.RaiseMessage(Properties.Resources.MainDryRunActive);
+                    int dryRunExitCode;
+                    using (var dryRunTransaction = CkanTransaction.CreateTransactionScope())
+                    {
+                        dryRunExitCode = RunSimpleAction(cmdline, options, args, user, manager);
+                        // Intentionally NOT calling dryRunTransaction.Complete().
+                    }
+                    user.RaiseMessage(Properties.Resources.MainDryRunComplete);
+                    return dryRunExitCode;
+                }
                 return RunSimpleAction(cmdline, options, args, user, manager);
             }
             finally
