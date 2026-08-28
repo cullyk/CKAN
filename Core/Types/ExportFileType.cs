@@ -7,6 +7,7 @@ namespace CKAN.Types
         Markdown,
         BbCode,
         Csv,
-        Tsv
+        Tsv,
+        Json
     }
 }

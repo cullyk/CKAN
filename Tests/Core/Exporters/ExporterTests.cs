@@ -72,6 +72,7 @@ namespace Tests.Core.Exporters
                                           ExportFileType.BbCode    => $"[*][B]{m.name}[/B] ({m})",
                                           ExportFileType.Csv       => $"{m.identifier},{m.version}",
                                           ExportFileType.Tsv       => $"{m.identifier}\t{m.version}\t{m.name}\t{m.@abstract}",
+                                          ExportFileType.Json      => $@"""identifier"": ""{m.identifier}""",
                                           _ => throw new ArgumentOutOfRangeException(nameof(exportType),
                                                                                      exportType.ToString()),
                                       }),

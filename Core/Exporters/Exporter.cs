@@ -27,6 +27,7 @@ namespace CKAN.Exporters
                 ExportFileType.BbCode    => new BbCodeExporter(),
                 ExportFileType.Csv       => new DelimiterSeparatedValueExporter(DelimiterSeparatedValueExporter.Delimiter.Comma),
                 ExportFileType.Tsv       => new DelimiterSeparatedValueExporter(DelimiterSeparatedValueExporter.Delimiter.Tab),
+                ExportFileType.Json      => new JsonExporter(),
                 _                        => throw new ArgumentOutOfRangeException(nameof(exportFileType),
                                                                                   exportFileType.ToString()),
             };

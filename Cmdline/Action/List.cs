@@ -174,6 +174,7 @@ namespace CKAN.CmdLine
                 "bbcode"   => ExportFileType.BbCode,
                 "csv"      => ExportFileType.Csv,
                 "tsv"      => ExportFileType.Tsv,
+                "json"     => ExportFileType.Json,
                 _          => null,
             };
 
@@ -188,7 +189,7 @@ namespace CKAN.CmdLine
         [Option("porcelain", HelpText = "Dump raw list of modules, good for shell scripting")]
         public bool porcelain { get; set; }
 
-        [Option("export", HelpText = "Format of module list: ckan, text, markdown, bbcode, csv, tsv")]
+        [Option("export", HelpText = "Format of module list: ckan, text, markdown, bbcode, csv, tsv, json")]
         public string? export { get; set; }
     }
 
