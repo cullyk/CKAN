@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -55,7 +56,16 @@ namespace CKAN.NetKAN.Sources.Jenkins
                 : default;
 
         private string? Call(Uri url)
-            => _http.DownloadText(url);
+        {
+            try
+            {
+                return _http.DownloadText(url);
+            }
+            catch (WebException exc)
+            {
+                throw new Kraken($"Error fetching from Jenkins {url.OriginalString}: {exc.Message}");
+            }
+        }
 
         private static readonly Dictionary<JenkinsBuildType, string> BuildTypeToProperty = new Dictionary<JenkinsBuildType, string>()
         {
